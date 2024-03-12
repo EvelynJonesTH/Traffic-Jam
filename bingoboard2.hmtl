@@ -1,0 +1,27 @@
+// Array of sight words
+const sightWords = ['the', 'and', 'you', 'for', 'was', 'are', 'with', 'his', 'her', 'they', 'this', 'have', 'from', 'one', 'had', 'by'];
+
+// Function to get a random sight word
+function getRandomWord() {
+  return sightWords[Math.floor(Math.random() * sightWords.length)];
+}
+
+// Create a 4x4 Bingo Board
+const board = document.createElement('div');
+board.className = 'bingo-board';
+
+for (let i = 0; i < 16; i++) {
+  const square = document.createElement('div');
+  square.className = 'bingo-square';
+  square.textContent = getRandomWord();
+  square.addEventListener('click', () => {
+    if (speechSynthesis.speaking) {
+      speechSynthesis.cancel();
+    }
+    const utterance = new SpeechSynthesisUtterance(square.textContent);
+    speechSynthesis.speak(utterance);
+  });
+  board.appendChild(square);
+}
+
+document.body.appendChild(board);
