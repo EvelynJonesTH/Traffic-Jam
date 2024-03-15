@@ -30,7 +30,7 @@
 </style>
 </head>
 <body>
-
+Listen for the sight word and click on correct block 
 <script>
   // Array of sight words
 const sightWords = ['The', 'And', 'You', 'For', 'Was', 'Are', 'With', 'His', 'Her', 'They', 'This', 'Have', 'from', 'one', 'had', 'by'];
@@ -39,6 +39,9 @@ const sightWords = ['The', 'And', 'You', 'For', 'Was', 'Are', 'With', 'His', 'He
 function getRandomWord() {
   return sightWords[Math.floor(Math.random() * sightWords.length)];
 }
+
+        const firstWord = new SpeechSynthesisUtterance(getRandomWord());
+    speechSynthesis.speak(firstWord);
 
 // Create a 4x4 Bingo Board
 const board = document.createElement('div');
