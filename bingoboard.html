@@ -40,9 +40,6 @@ function getRandomWord() {
   return sightWords[Math.floor(Math.random() * sightWords.length)];
 }
 
-        const firstWord = new SpeechSynthesisUtterance(getRandomWord());
-    speechSynthesis.speak(firstWord);
-
 // Create a 4x4 Bingo Board
 const board = document.createElement('div');
 board.className = 'bingo-board';
@@ -62,6 +59,13 @@ for (let i = 0; i < 16; i++) {
 }
 
 document.body.appendChild(board);
+
+    // Now speak a random word
+           if (speechSynthesis.speaking) {
+      speechSynthesis.cancel();
+    }
+        const randtWord = new SpeechSynthesisUtterance(getRandomWord());
+    speechSynthesis.speak(randWord);
 
 </script>
 </body>
