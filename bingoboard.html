@@ -39,20 +39,42 @@ const sightWords = ['The', 'And', 'You', 'For', 'Was', 'Are', 'With', 'His', 'He
 function getRandomWord() {
   return sightWords[Math.floor(Math.random() * sightWords.length)];
 }
+correctWord = "Nothing" // need to initialize it to something
+    
+        // Make the start button
+    // Now speak a random word - for now just says "and"
+ const startBtn = document.createElement('div');
+  startBtn.className = 'bingo-square';
+  startBtn.textContent = "START";
+  startBtn.addEventListener('click', () => {
+    if (speechSynthesis.speaking) {
+      speechSynthesis.cancel();
+    }
+    correctWord = getRandomWord()
+    const sUtterance = new SpeechSynthesisUtterance(correctWord);
+    speechSynthesis.speak(sUtterance);
+  });
+
+document.body.appendChild(startBtn);
 
 // Create a 4x4 Bingo Board
 const board = document.createElement('div');
 board.className = 'bingo-board';
 
+// Make the word board
 for (let i = 0; i < 16; i++) {
   const square = document.createElement('div');
   square.className = 'bingo-square';
-  square.textContent = getRandomWord();
+  square.textContent = sightWords[i];
+   
   square.addEventListener('click', () => {
     if (speechSynthesis.speaking) {
       speechSynthesis.cancel();
     }
-    const utterance = new SpeechSynthesisUtterance(square.textContent);
+       result = "Wrong";
+      if (square.textContent == correctWord) { result = "Correct"; }
+      response = result + ". " + square.textContent;
+    const utterance = new SpeechSynthesisUtterance(response);
     speechSynthesis.speak(utterance);
   });
   board.appendChild(square);
@@ -60,13 +82,10 @@ for (let i = 0; i < 16; i++) {
 
 document.body.appendChild(board);
 
-    // Now speak a random word
-           if (speechSynthesis.speaking) {
-      speechSynthesis.cancel();
-    }
-        const randWord = new SpeechSynthesisUtterance(getRandomWord());
-    speechSynthesis.speak(randWord);
+
 
 </script>
 </body>
 </html>
+
+
