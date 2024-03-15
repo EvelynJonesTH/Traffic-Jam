@@ -64,7 +64,7 @@ document.body.appendChild(board);
            if (speechSynthesis.speaking) {
       speechSynthesis.cancel();
     }
-        const randtWord = new SpeechSynthesisUtterance(getRandomWord());
+        const randWord = new SpeechSynthesisUtterance(getRandomWord());
     speechSynthesis.speak(randWord);
 
 </script>
