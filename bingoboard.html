@@ -72,7 +72,16 @@ for (let i = 0; i < 16; i++) {
       speechSynthesis.cancel();
     }
        result = "Wrong";
-      if (square.textContent == correctWord) { result = "Correct"; }
+      if (square.textContent == correctWord) { 
+          result = "Correct";
+                                                let wordToType = "apple";
+    let userTypedWord = prompt("Type the word you just heard:");
+    if (userTypedWord.toLowerCase() === wordToType) {
+        alert("Correct!");
+    } else {
+        alert("Try again.");
+    }
+                                             }
       response = result + ". " + square.textContent;
     const utterance = new SpeechSynthesisUtterance(response);
     speechSynthesis.speak(utterance);
@@ -82,13 +91,6 @@ for (let i = 0; i < 16; i++) {
 
 document.body.appendChild(board);
 
-    let wordToType = "apple";
-let userTypedWord = prompt("Type the word you just heard:");
-if (userTypedWord.toLowerCase() === wordToType) {
-    alert("Correct!");
-} else {
-    alert("Try again.");
-}
  
 </script>
 </body>
