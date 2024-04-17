@@ -82,6 +82,17 @@ for (let i = 0; i < 16; i++) {
 
 document.body.appendChild(board);
 
+    // HTML code to generate a textbox and submit button
+const form = document.createElement('form');
+const textbox = document.createElement('input');
+textbox.setAttribute('type', 'text');
+const submitBtn = document.createElement('input');
+submitBtn.setAttribute('type', 'submit');
+
+form.appendChild(textbox);
+form.appendChild(submitBtn);
+
+document.body.appendChild(form);
 
 
 </script>
